@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *         La clase Tablero permite definir las matrices y los metodos de Carro,
- *         Huevo, Puntaje para cada Kromi, Caguano y Trupalla.
- *	
- *@author Sebastián Acevedo. Oscurilandia 2. Versión 1.0
+ * La clase Tablero permite definir las matrices y los metodos de Carro, Huevo,
+ * Puntaje para cada Kromi, Caguano y Trupalla.
+ * 
+ * Seguridad PKS : Kromis = 3 cuadros, tipo int K (ubicados en vertical)
+ * Caguanos = 2 cuadros, tipo int C (ubicados en horizontal) Trupallas = 1
+ * cuadro, tipo int T (continua en la celda obtenida).
+ * 
+ * @author: Sebastián Acevedo. Oscurilandia 2.
+ * @Version 
+ * @see <a href="https://github.com/Subkei/Clase-Modulo-2-Final/tree/master/Oscurilandia2">Versión en Github</a>
  *
- *         Seguridad PKS : Kromis = 3 cuadros, tipo int K (ubicados en vertical)
- *         Caguanos = 2 cuadros, tipo int C (ubicados en horizontal) Trupallas =
- *         1 cuadro, tipo int T (continua en la celda obtenida).
  */
  
 public class Tablero {
@@ -29,7 +32,9 @@ public class Tablero {
 	// Se crea un objeto de la clase Scanner asociado al teclado
 	private static Scanner lectura; 
 
-	/* Constructor Tablero, se inicializan la dimension, tableros y barcos. */
+	/**
+	 * Constructor Tablero, se inicializan la dimension, tableros y barcos.
+	 */
 	public Tablero() {
 
 	}
@@ -57,11 +62,10 @@ public class Tablero {
 	}
 
 	/**
-	 * ---------------- Metodos de la clase Tablero ---------------------
+	 * Metodo mostrar Tablero en consola.
+	 * Recorre el arreglo y llena tablero con '.' para mejor visualización.
 	 */
 
-	// Metodo mostrar Tablero en pantalla.
-	// Recorre el arreglo y llena tablero con '.' para mejor visualización.
 	public static void imprimirTablero() {
 		for (int i = 0; i < tablero.length; i++) {
 			for (int j = 0; j < tablero.length; j++) {
@@ -69,9 +73,11 @@ public class Tablero {
 			}
 			System.out.println(); // Ingresa salto linea
 		}
-	}
+	}//Cierre del método
 
-	// Metodo para agregar Kromi
+	/**
+	 *  Metodo para agregar Kromi al tablero
+	 */
 	public static void agregarKromi() {
 
 		Kromi kromi = new Kromi();
@@ -91,8 +97,9 @@ public class Tablero {
 		lectura.next();
 
 		/**
-		 * Metodo para asignar la pocisión de Kromi en el tablero Retorna falso si está
-		 * vacio y si encuentra un Kromi verdadero Termina por mostrar la fila y columna
+		 * Metodo para crear Kromi
+		 * Asigna la pocisión de Kromi en el tablero Retorna falso si está
+		 * vacio y si encuentra un Kromi verdadero termina por mostrar la fila y columna
 		 * en el tablero.
 		 */
 		boolean valido = false;
@@ -117,12 +124,16 @@ public class Tablero {
 		tablero[filaK + 1][columnaK] = 'K';
 		tablero[filaK + 2][columnaK] = 'K';
 		
-		// Se adjunta a la lista de la clase Kromi
+		/**
+		 *  Se adjunta a la lista de la clase Kromi
+		 */
 		KromiLista.add(kromi); 
 		return;
-	}
+	}//Cierre del método
 
-	// Metodo agregar Caguano
+	/**
+	 *  Metodo para agregar Caguano al tablero
+	 */
 	public static void agregarCaguano() {
 		Caguano caguano = new Caguano();
 
@@ -139,6 +150,12 @@ public class Tablero {
 		System.out.println("\nColor de confeti");
 		lectura.next();
 
+		/**
+		 * Metodo para crear Caguano
+		 * Asigna la pocisión de Caguano en el tablero Retorna falso si está
+		 * vacio y si encuentra un Caguano verdadero termina por mostrar la fila y columna
+		 * en el tablero.
+		 */
 		boolean valido = false;
 		do {
 			filaC = (int) (Math.random() * 15);
@@ -160,13 +177,17 @@ public class Tablero {
 		tablero[filaC][columnaC] = 'C';
 		tablero[filaC][columnaC + 1] = 'C';
 
-		// Se adjunta a la lista de la clase Caguano
+		/**
+		 *  Se adjunta caguano a la lista Caguano
+		 */
 		CaguanoLista.add(caguano);
 		return;
 
-	}
+	}//Cierre del método
 
-	// Metodo agregar Trupalla
+	/**
+	 *  Metodo para agregar Trupalla al tablero
+	 */
 	public static void agregarTrupalla() {
 		Trupalla trupa = new Trupalla();
 
@@ -183,6 +204,12 @@ public class Tablero {
 		System.out.println("\nIngrese el nombre del Tripulante");
 		lectura.next();
 
+		/**
+		 * Metodo para crear Trupalla
+		 * Asigna la pocisión de Trupalla en el tablero Retorna falso si está
+		 * vacio y si encuentra un Trupalla verdadero termina por mostrar la fila y columna
+		 * en el tablero.
+		 */
 		boolean valido = false;
 		do {
 			filaT = (int) (Math.random() * 15);
@@ -203,10 +230,12 @@ public class Tablero {
 
 		tablero[filaT][columnaT] = 'T';
 
-		// Se adjunta a la lista de la clase Trupalla
+		/**
+		 * Se adjunta Trupa a la lista Trupalla
+		 */
 		TrupallaLista.add(trupa); 
 		return;
-	}
+	}//Cierre del método
 
 	/**
 	 * ------------ Instancias de la clase Huevo ----------------
@@ -246,15 +275,17 @@ public class Tablero {
 		System.out.println("Acierto en la fila: " + filaH + ", columna: " + columnaH + ".\n"
 				+ "Puntaje obtenido por acierto: " + puntajeObtenido + ".\n");
 
-		
 		huevo.setFilaH(filaH);
 		huevo.setColumnaH(columnaH);
 		huevo.setPuntajeObtenido(puntajeObtenido);
-		// Se adjunta a la lista de la clase Huevo
+		
+		/**
+		 *  Se adjunta a la lista de la clase Huevo
+		 */
 		HuevoLista.add(huevo); 
 
 		return huevo;
-	}
+	}//Cierre del método
 
 	/**
 	 *  Metodo calcular Puntaje
@@ -274,7 +305,10 @@ public class Tablero {
 		System.out.println("\nPuntaje total: " + puntajeTotal + ".\n");
 	}
 
-	// Metodo puntaje por carros eliminados
+	/**
+	 * Metodo puntaje por carros eliminados
+	 * @return Retorna Puntaje Total
+	 */
 	public static int carrosEliminados() {
 
 		// Se inicializa el atributo a 0
@@ -298,12 +332,11 @@ public class Tablero {
 				puntajeTotal += 7; // 7 puntos adicionales por inutilizar un Caguano
 			}
 		}
-		// Retorna el puntaje Total
 		return puntajeTotal; 
-	}
+	}//Cierre del método
 
 	/**
-	 * -----------------------------------------------------------------------------------
+	 * Menu principal del programa
 	 * Instrucciones de uso: El usuario ingresa datos para crear los carros Kromi,
 	 * Caguano, Trupalla. Imprime tablero con ubicaciones de los carros y aciertos
 	 * al lanzar huevos. Para lanzar huevos, se le solicita al usuario ingresar
@@ -313,10 +346,8 @@ public class Tablero {
 	 * punto" "Si se inutiliza completamente un Kromi, son 10 puntos adicionales"
 	 * "Si se inutiliza completamente un Caguano, son 7 puntos adicionales" "Si se
 	 * inutiliza completamente un Trupalla, no lleva puntos adicionales".
-	 * ------------------------------------------------------------------------------------
 	 */
 
-	/* Menu principal del programa */
 	public static void main(String[] arg) {
 	
 		lectura = new Scanner(System.in);
@@ -371,4 +402,4 @@ public class Tablero {
 
 		lectura.close(); // Se cierra el objeto Scanner
 	}
-}
+}//Cierre de la clase
