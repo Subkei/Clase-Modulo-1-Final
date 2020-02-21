@@ -44,15 +44,15 @@ public class Tablero {
 
 		// Arreglos para Metodo Huevo y Carro
 		HuevoLista = new ArrayList<Huevo>();
-		TrupallaLista = new ArrayList<Trupalla>();
-
+		
 		// Matriz 15x15 con elementos
 		tablero = new char[15][15];
 
 		// Arreglos para Metodo Carros eliminados
 		KromiLista = new ArrayList<Kromi>();
 		CaguanoLista = new ArrayList<Caguano>();
-
+		TrupallaLista = new ArrayList<Trupalla>();
+		
 		// Llenado de Tablero solo con espacios vacios
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 15; j++) {
@@ -389,7 +389,7 @@ public class Tablero {
 				calcularPuntaje();
 				break;
 			case 7:
-				// Salir del programa
+				// Salir del programa y muestra Puntaje Final
 				calcularPuntaje(); 
 				System.out.println("Saliendo del programa..."); 
 				break;
